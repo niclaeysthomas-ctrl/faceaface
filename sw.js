@@ -1,5 +1,5 @@
 /* LE FACE-À-FACE — service worker (offline-first) */
-const CACHE = "faceaface-v1";
+const CACHE = "faceaface-v2";
 const ASSETS = [
   "./",
   "./index.html",
