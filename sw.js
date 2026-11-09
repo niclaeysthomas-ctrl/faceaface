@@ -1,5 +1,5 @@
 /* LE FACE-À-FACE — service worker (offline-first) */
-const CACHE = "faceaface-v2";
+const CACHE = "faceaface-v3";
 const ASSETS = [
   "./",
   "./index.html",
@@ -31,7 +31,7 @@ self.addEventListener("fetch", (e) => {
     caches.match(e.request).then((hit) =>
       hit || fetch(e.request).then((res) => {
         const copy = res.clone();
-        caches.open(CACHE).then((c) => c.put(e.request, copy)).catch(() => {});
+        if (res.ok) caches.open(CACHE).then((c) => c.put(e.request, copy)).catch(() => {});
         return res;
       }).catch(() => caches.match("./index.html"))
     )
